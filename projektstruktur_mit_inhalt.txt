@@ -4683,5 +4683,8 @@ createRoot(document.getElementById('root')!).render(
 ./client/src/pages/admin/dashboard/index.tsx:
 
 
+./client/src/pages/public/landing/index.tsx:
+
+
 
 Projektstruktur und Inhalte Server:
