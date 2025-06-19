@@ -1,3 +1,273 @@
+Inhalt von agent.txt:
+Dies wird die Agent.txt
+
+Inhalt von brain.txt:
+## Projektname
+estatepilot
+
+## Zielgruppe
+- Vermieter von Mietwohnungen, Miethäusern und Airbnb-Objekten
+- Sowohl Einzelpersonen als auch professionelle Verwalter
+- Nicht für Makler oder Immobilienverkauf gedacht
+
+## Ziel des Projekts
+Zentrale Digitalisierung und Automatisierung aller Verwaltungsaufgaben rund um vermietete Immobilien. Fokus: Übersicht, Effizienz, Wirtschaftlichkeitskontrolle.
+
+---
+
+## Hauptmodule
+
+### 🏡 Objektverwaltung
+- Verwaltung von Mietobjekten (Wohnungen, Häuser, Airbnb-Einheiten)
+- Erfassung von Standort, Größe, Ausstattung, Mietverträgen
+
+### 🛠 Sanierungs- und Maßnahmenakte
+- Dokumentation von durchgeführten Sanierungen, Wartungen, Renovierungen
+- Hinterlegung von Datum, Kosten, Beschreibung
+- Upload von Fotos und kurzen Videos (z. B. Vorher/Nachher, für spätere Inserate oder Nachweise)
+
+### 👥 Mieterakte
+- Verwaltung von Mieterinformationen
+- Mietverläufe, Kontaktdaten, Vertragslaufzeit, Sondervereinbarungen
+
+### 💸 Mietzahlungen & Finanzen
+- Statusanzeige von Mieteingängen (bezahlt, offen, überfällig)
+- Verwaltung von Nebenkosten
+- Erfassung von Krediten (z. B. Objektfinanzierung inkl. Zinsen & Tilgung)
+
+### 📈 Wirtschaftlichkeitsanalyse
+- Einnahmen-/Ausgabenrechnung je Objekt
+- Berechnung von Rendite, Leerstandskosten, Cashflow
+- Berücksichtigung laufender Kredite und Sanierungskosten
+
+### 📬 Kommunikation
+- Automatische Antworten auf Interessentenanfragen
+- Erinnerungen bei Zahlungsausfällen
+- Geplante Integration von Airbnb-Messaging
+
+### 🗂 Digitale Objektakte
+- Mietverträge, Energieausweise, Übergabeprotokolle
+- Sanierungsdokumente, Medien (Fotos/Videos)
+- Revisionssichere Dokumentenhistorie
+
+### 📊 Reporting
+- Übersicht zu Einnahmen, Ausgaben, Leerstand, Verzug etc.
+- Reports als CSV, PDF oder Excel exportierbar (z. B. für Steuer oder Eigentümer)
+
+### 👤 Rollen- & Benutzerverwaltung
+- Zugriff für mehrere Personen (Eigentümer, Verwaltung, Buchhaltung)
+- Rollen mit Berechtigungen (z. B. nur Lesezugriff, nur Finanzen etc.)
+
+---
+
+## Technischer Fokus
+- Vite + React + Tailwind (Design via shadcn/ui)
+- Modulstruktur: `admin`, `user`, `public`
+- Trennung in Client/Server
+- Mandantenfähig
+- DSGVO-konform
+- Upload/Verwaltung von Mediendateien (Bilder, Videos, PDFs)
+- REST-API-first (für spätere App-Erweiterung)
+
+---
+
+## Geplante Erweiterungen
+- Zubehörshop (z. B. QR-Schlüsselanhänger)
+- QR-basierte Info- & Kontaktseiten für z. B. Airbnb-Zimmer
+- Terminverwaltung (Besichtigungen, Handwerker, Ablesetermine)
+- Support-/Ticketsystem für größere Vermieter
+
+---
+
+## Aktueller Status
+- Projektstruktur steht (Client/Server)
+- WebStorm-Projekt eingerichtet
+- Tailwind funktioniert
+- GitHub-Repo aktiv
+- Erste Komponenten angelegt
+- Basisfunktionalitäten werden Schritt für Schritt erweitert
+
+
+Inhalt von progress.txt:
+Hier entsteht die Progress.txt
+
+
+Projektstruktur und Inhalte Client:
+
+./client/tsconfig.node.json:
+
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
+}
+
+./client/index.html:
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+./client/tailwind.config.js:
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+./client/tsconfig.app.json:
+
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src"]
+}
+
+./client/README.md:
+
+# React + TypeScript + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
+
+./client/.gitignore:
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+./client/package-lock.json:
+
 {
   "name": "client",
   "version": "0.0.0",
@@ -4121,3 +4391,297 @@
     }
   }
 }
+
+./client/package.json:
+
+{
+  "name": "client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.1",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.30.1",
+    "vite": "^6.3.5"
+  }
+}
+
+./client/tsconfig.json:
+
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+
+./client/eslint.config.js:
+
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+
+export default tseslint.config(
+  { ignores: ['dist'] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    },
+  },
+)
+
+./client/vite.config.ts:
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+
+./client/postcss.config.js:
+
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+./client/.idea/inspectionProfiles/Project_Default.xml:
+
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+  </profile>
+</component>
+./client/.idea/client.iml:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
+./client/.idea/.gitignore:
+
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+./client/.idea/workspace.xml:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cb8bcbd8-364d-4f4d-a8e2-82567371debe" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2yjwUx37noVst6cn3kcuZ8Z1uOs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="npm dev" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-WS-251.26094.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb8bcbd8-364d-4f4d-a8e2-82567371debe" name="Changes" comment="" />
+      <created>1750361309381</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1750361309381</updated>
+      <workItem from="1750361310398" duration="28000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
+./client/.idea/modules.xml:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/client.iml" filepath="$PROJECT_DIR$/.idea/client.iml" />
+    </modules>
+  </component>
+</project>
+./client/src/App.tsx:
+
+/* ./client/src/App.tsx */
+
+export default function App() {
+    return (
+        <div className="bg-slate-900 text-white min-h-screen flex items-center justify-center">
+            <h1 className="text-4xl font-bold">Unser Projekt startet hier!</h1>
+        </div>
+    );
+}
+./client/src/main.tsx:
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+./client/src/App.css:
+
+/* client/src/App.css */
+
+#root {
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+./client/src/index.css:
+
+/* ./client/src/index.css */
+
+/* Essentielle Tailwind-Direktiven */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Globale Basis-Regeln, die sinnvoll sind */
+@layer base {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+./client/src/vite-env.d.ts:
+
+/// <reference types="vite/client" />
+
+./client/src/pages/admin/dashboard/index.tsx:
+
+
+
+Projektstruktur und Inhalte Server:

@@ -1,1 +1,84 @@
-Dies hier ist ein test
+## Projektname
+estatepilot
+
+## Zielgruppe
+- Vermieter von Mietwohnungen, Miethäusern und Airbnb-Objekten
+- Sowohl Einzelpersonen als auch professionelle Verwalter
+- Nicht für Makler oder Immobilienverkauf gedacht
+
+## Ziel des Projekts
+Zentrale Digitalisierung und Automatisierung aller Verwaltungsaufgaben rund um vermietete Immobilien. Fokus: Übersicht, Effizienz, Wirtschaftlichkeitskontrolle.
+
+---
+
+## Hauptmodule
+
+### 🏡 Objektverwaltung
+- Verwaltung von Mietobjekten (Wohnungen, Häuser, Airbnb-Einheiten)
+- Erfassung von Standort, Größe, Ausstattung, Mietverträgen
+
+### 🛠 Sanierungs- und Maßnahmenakte
+- Dokumentation von durchgeführten Sanierungen, Wartungen, Renovierungen
+- Hinterlegung von Datum, Kosten, Beschreibung
+- Upload von Fotos und kurzen Videos (z. B. Vorher/Nachher, für spätere Inserate oder Nachweise)
+
+### 👥 Mieterakte
+- Verwaltung von Mieterinformationen
+- Mietverläufe, Kontaktdaten, Vertragslaufzeit, Sondervereinbarungen
+
+### 💸 Mietzahlungen & Finanzen
+- Statusanzeige von Mieteingängen (bezahlt, offen, überfällig)
+- Verwaltung von Nebenkosten
+- Erfassung von Krediten (z. B. Objektfinanzierung inkl. Zinsen & Tilgung)
+
+### 📈 Wirtschaftlichkeitsanalyse
+- Einnahmen-/Ausgabenrechnung je Objekt
+- Berechnung von Rendite, Leerstandskosten, Cashflow
+- Berücksichtigung laufender Kredite und Sanierungskosten
+
+### 📬 Kommunikation
+- Automatische Antworten auf Interessentenanfragen
+- Erinnerungen bei Zahlungsausfällen
+- Geplante Integration von Airbnb-Messaging
+
+### 🗂 Digitale Objektakte
+- Mietverträge, Energieausweise, Übergabeprotokolle
+- Sanierungsdokumente, Medien (Fotos/Videos)
+- Revisionssichere Dokumentenhistorie
+
+### 📊 Reporting
+- Übersicht zu Einnahmen, Ausgaben, Leerstand, Verzug etc.
+- Reports als CSV, PDF oder Excel exportierbar (z. B. für Steuer oder Eigentümer)
+
+### 👤 Rollen- & Benutzerverwaltung
+- Zugriff für mehrere Personen (Eigentümer, Verwaltung, Buchhaltung)
+- Rollen mit Berechtigungen (z. B. nur Lesezugriff, nur Finanzen etc.)
+
+---
+
+## Technischer Fokus
+- Vite + React + Tailwind (Design via shadcn/ui)
+- Modulstruktur: `admin`, `user`, `public`
+- Trennung in Client/Server
+- Mandantenfähig
+- DSGVO-konform
+- Upload/Verwaltung von Mediendateien (Bilder, Videos, PDFs)
+- REST-API-first (für spätere App-Erweiterung)
+
+---
+
+## Geplante Erweiterungen
+- Zubehörshop (z. B. QR-Schlüsselanhänger)
+- QR-basierte Info- & Kontaktseiten für z. B. Airbnb-Zimmer
+- Terminverwaltung (Besichtigungen, Handwerker, Ablesetermine)
+- Support-/Ticketsystem für größere Vermieter
+
+---
+
+## Aktueller Status
+- Projektstruktur steht (Client/Server)
+- WebStorm-Projekt eingerichtet
+- Tailwind funktioniert
+- GitHub-Repo aktiv
+- Erste Komponenten angelegt
+- Basisfunktionalitäten werden Schritt für Schritt erweitert
